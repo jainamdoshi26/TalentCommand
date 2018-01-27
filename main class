@@ -4,6 +4,7 @@ public class Home {
 
 	public static void main(String[] args) throws InterruptedException 
 	{
+	//call the Log-In function of login class 
 	LogInFunction Obj=new LogInFunction();
 	Obj.OpenCreateCompany();
 	}

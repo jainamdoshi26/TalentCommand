@@ -1,0 +1,77 @@
+package newTestScript;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.*;
+//import com.gargoylesoftware.htmlunit.javascript.host.Iterator;
+//import com.gargoylesoftware.htmlunit.javascript.host.Set;
+
+
+public class FirstTest {
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+		// TODO Auto-generated method stub
+		//System.out.print("Hi");
+		//WebDriverWait wait = new WebDriverWait(driver,30);
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-bind='click: $root.login']")));
+		
+		System.setProperty("webdriver.chrome.driver","E:\\MyNewProject\\drivers\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		driver.get("https://talentcommand.com/login/");
+	    
+		driver.switchTo().frame(0);
+	    driver.findElement(By.xpath("//input[@data-bind='value: Email']")).sendKeys("admin");
+	    driver.findElement(By.xpath("//input[@data-bind='value: Password']")).sendKeys("Talent2017!");
+	    driver.findElement(By.xpath("//button[@data-bind='click: $root.login']")).click();
+	       
+	    Actions actions = new Actions(driver);
+	    
+	    WebDriverWait wait = new WebDriverWait(driver, 10);
+	    
+	    //driver.switchTo().defaultContent();
+	    
+	   	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Administration') and @class='drop-toggle']")));
+
+	    actions.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Administration') and @class='drop-toggle']"))).click().perform();
+	    actions.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Administration') and @class='drop-toggle']/following::li[1]/a[contains(text(),'Company')]"))).click().perform();
+	    
+	    //Creation of new company
+	    
+	  //  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div//button[contains(text(),'New Company') and @class='btn btn-primary']")));
+
+	 //   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//button[contains(text(),'New Company') and @class='btn btn-primary']")));
+	    
+	    Thread.sleep(15000);
+	    
+	    driver.findElement(By.xpath("//div//button[contains(text(),'New Company') and @class='btn btn-primary']")).click();
+	    
+	    Thread.sleep(10000);
+	    
+	    driver.findElement(By.xpath("//div//input[@name='accountNumber']")).sendKeys("TalentCommand");
+	    driver.findElement(By.xpath("//div//input[@name='regionID']")).sendKeys("Talent123");
+	    driver.findElement(By.xpath("//div//input[@name='companyName']")).sendKeys("TalentCommand");
+	    driver.findElement(By.xpath("//div//button[@class='multiselect dropdown-toggle btn btn-default']")).click();
+	    driver.findElement(By.xpath("//ul//li[2]//a//label[contains(text(),'Bimal Kumar')]")).click();
+	    driver.findElement(By.xpath("//div//input[@value='Add Company']")).click();
+	    Thread.sleep(1000);
+	    if(driver.findElement(By.xpath("//span[text()='Client ID already exist']")).isDisplayed()) {
+	    	driver.findElement(By.xpath("//div//input[@value='Cancel']")).click();
+	    }
+	    
+//	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//label//input[@aria-controls='navigationItems']")));
+//	    
+//	    driver.findElement(By.xpath("//div//label//input[@aria-controls='navigationItems']")).sendKeys("TalentCommand");
+//	    
+	    
+
+	}
+
+}

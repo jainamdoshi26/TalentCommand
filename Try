@@ -62,10 +62,25 @@ public class FirstTest {
 	    driver.findElement(By.xpath("//ul//li[2]//a//label[contains(text(),'Bimal Kumar')]")).click();
 	    driver.findElement(By.xpath("//div//input[@value='Add Company']")).click();
 	    Thread.sleep(1000);
-	    if(driver.findElement(By.xpath("//span[text()='Client ID already exist']")).isDisplayed()) {
+	    
+	    if(driver.findElement(By.xpath("//span[text()='Client ID already exist']")).isDisplayed()) 
+	    {
 	    	driver.findElement(By.xpath("//div//input[@value='Cancel']")).click();
 	    }
 	    
+	    
+		Company Name dropdown		"//div//a//span[@class='select2-chosen']"
+		
+	    	Search Company			"//div//input[@class='select2-input']"
+		
+		New User			"//div//button[@id='new-user']"
+		
+		Legal First Name		"//div//input[@data-bind='value: Person().FirstName']"
+		
+		Last Name			"//div//input[@data-bind='value:Person().LastName']"
+		
+		
+
 //	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//label//input[@aria-controls='navigationItems']")));
 //	    
 //	    driver.findElement(By.xpath("//div//label//input[@aria-controls='navigationItems']")).sendKeys("TalentCommand");

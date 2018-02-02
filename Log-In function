@@ -59,8 +59,8 @@ public class LogInFunction
 		
 		driver.get("https://talentcommand.com/login/");
 	    driver.switchTo().frame(0);
-	    driver.findElement(By.xpath("//input[@data-bind='value: Email']")).sendKeys("admin");
-	    driver.findElement(By.xpath("//input[@data-bind='value: Password']")).sendKeys("Talent2017!");
+	    driver.findElement(By.xpath("//input[@data-bind='value: Email']")).sendKeys("a");
+	    driver.findElement(By.xpath("//input[@data-bind='value: Password']")).sendKeys("T");
 	    driver.findElement(By.xpath("//button[@data-bind='click: $root.login']")).click();
 	    Actions actions = new Actions(driver);
 	    

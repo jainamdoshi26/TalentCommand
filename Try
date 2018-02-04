@@ -60,7 +60,7 @@ public class FirstTest {
 	    
 	    driver.findElement(By.xpath("//div//input[@value='Add Company']")).click();
 
-	    Thread.sleep(1000);
+	    Thread.sleep(1500);
 
 	    if(driver.findElements(By.xpath("//span[text()='Client ID already exist']")).size()!=0) 
 	    {
@@ -83,16 +83,48 @@ public class FirstTest {
 	    	System.out.println("Somthing went wrong");
 	    }
 	    
+	    actions.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Administration') and @class='drop-toggle']"))).click().perform();
+	    Thread.sleep(2000);
+	    actions.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Administration') and @class='drop-toggle']/following::li/a[contains(text(),'User') and @href='/User']"))).click().perform();
+	    
+//	    Company Name dropdown
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//a//span[@class='select2-chosen']")));
+	    Thread.sleep(5000);
+	    driver.findElement(By.xpath("//div//a//span[@class='select2-chosen']")).click();
+	    System.out.println("Company Dropdown working fine");
 
-//	    Company Name dropdown		"//div//a//span[@class='select2-chosen']"
+//	    Search Company			
+	    Thread.sleep(5000);
+	    driver.findElement(By.xpath("//div//input[@id='s2id_autogen1_search']")).sendKeys("TalentCommand");;
+	    driver.findElement(By.xpath("//div[@class='select2-result-label']")).click();
+	    System.out.println("Select Company working fine");
+	    
+//	    New User
+	    Thread.sleep(5000);
+	    driver.findElement(By.xpath("//div//button[@id='new-user']")).click();
+	    System.out.println("New user button working fine");
 
-//	    Search Company			"//div//input[@class='select2-input']"
+//	    Legal First Name
+	    driver.findElement(By.xpath("//div//input[@data-bind='value: Person().FirstName']")).sendKeys("Alex");
+	    System.out.println("First Name working fine");
 
-//	    New User			"//div//button[@id='new-user']"
+//	    Last Name	
+	    driver.findElement(By.xpath("//div//input[@data-bind='value:Person().LastName']")).sendKeys("Johnson");
+	    System.out.println("Last Name working fine");
 
-//	    Legal First Name		"//div//input[@data-bind='value: Person().FirstName']"
+//	    SSN Name
+	    driver.findElement(By.xpath("//div//input[@id='SSN-number']")).sendKeys("162589568");
+	    System.out.println("SSN working fine");
 
-//	    Last Name			"//div//input[@data-bind='value:Person().LastName']"	    
+//	    Date of Birth
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("//input[@id='date-of-birth']")).click();
+	    //driver.findElement(By.xpath("//select[@class='ui-datepicker-year']")).click();
+	    driver.findElement(By.xpath("//select[@class='ui-datepicker-year']//option[@value='1995']")).click();
+	    driver.findElement(By.xpath("//select[@class='ui-datepicker-month']//option[2]")).click();
+	    driver.findElement(By.xpath("//a[@class='ui-state-default' and contains(text(),'26')]")).click();
+	    System.out.println("Date of Birth working fine");
+
 	}
 
 }

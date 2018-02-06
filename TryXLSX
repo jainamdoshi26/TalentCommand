@@ -8,10 +8,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class TryCSV {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception 
+	{
 		// TODO Auto-generated method stub
 
-	    File src=new File("C:\\Users\\jvd26\\Downloads\\TestData.xlsx");
+	    File src=new File("C:\\Users\\LT-132\\Downloads\\TestData.xlsx");
 	    
 	    FileInputStream fls=new FileInputStream(src);	
 	    
@@ -21,12 +22,18 @@ public class TryCSV {
 	    
 	    String data0;
 	    
-	    for(int i=1;i<4;i++)
+	    int rownum=sheet1.getLastRowNum();
+	    int colnum;
+	    
+	    for(int i=1;i<=rownum;i++)
 	    {
-	    	for(int j=1;j<4;j++)
+	    	colnum=sheet1.getRow(i).getLastCellNum();
+	    	
+	    	System.out.println("Data of "+i+" Row:");	    	
+	    	for(int j=0;j<colnum;j++)
 	    	{
 	    		data0=sheet1.getRow(i).getCell(j).getStringCellValue();
-	    		System.out.println("The data of "+i+" Row and "+j+" Column:"+data0);
+	    		System.out.println(""+data0);
 	    	}
 	    }
 
